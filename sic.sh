@@ -4,7 +4,6 @@
 # Contact: https://www.linkedin.com/in/marcelo-canales			
 # Repository: https://github.com/marcelocanales/sic
 # Description: Enhances the search experience by providing context lines around search hits using 'ag', 'fzf', and 'bat'.
-# License: MIT License
 
 	function check_dependencies() {
   local missing_deps=()
