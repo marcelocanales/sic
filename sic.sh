@@ -5,7 +5,8 @@
 # Repository: https://github.com/marcelocanales/sic
 # Description: Enhances the search experience by providing context lines around search hits using 'ag', 'fzf', and 'bat'.
 
-	function check_dependencies() {
+
+function check_dependencies() {
   local missing_deps=()
   local dep
   for dep in ag fzf bat; do
@@ -36,7 +37,7 @@ function sic() {
   local result selected_file selected_line
 
   # Perform the search and allow the user to select a line with a colored preview with context.
-  result=$(ag --nobreak --noheading "$query" | fzf --delimiter=':' \
+  result=$(ag --literal --nobreak --noheading "$query" | fzf --delimiter=':' \
     --preview "echo 'File: {1}'; echo 'Line: {2}'; line=\$(echo {2}); bat --style=numbers --color=always --line-range \$((line > 5 ? line - 5 : 1)):\$((line + 5)) --highlight-line \$line {1}" \
     --preview-window=up:60%:wrap --bind '?:toggle-preview')
 
